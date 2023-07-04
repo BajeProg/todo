@@ -1,0 +1,45 @@
+body {
+    color: #232323;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+}
+
+.container{
+    background-color: whitesmoke;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    position: relative;
+    top: 50%;
+}
+
+input{
+    width: 90%;
+    height: 50px;
+    border: solid black 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button{
+    background-color: white;
+    width: 94.5%;
+    height: 30px;
+    border: solid black 1px;
+}
+
+button:hover{
+    background-color: whitesmoke;
+}
+
+a:visited, a{
+    color: #232323;
+}
+
+a:hover{
+    color: #cbcbcb;
+}
