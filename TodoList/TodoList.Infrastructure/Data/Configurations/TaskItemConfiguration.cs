@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TodoList.Domain.Entities;
+using TaskStatusEntity = TodoList.Domain.Entities.TaskStatus;
 
 namespace TodoList.Infrastructure.Data.Configurations
 {
@@ -46,14 +47,28 @@ namespace TodoList.Infrastructure.Data.Configurations
                 .HasColumnName("project_id")
                 .IsRequired();
 
+            builder.Property(x => x.StatusId)
+                .HasColumnName("status_id")
+                .HasDefaultValue(TaskStatusEntity.OpenId)
+                .IsRequired();
+
             builder.HasIndex(x => x.ProjectId)
                 .HasDatabaseName("ix_task_items_project_id");
+
+            builder.HasIndex(x => x.StatusId)
+                .HasDatabaseName("ix_task_items_status_id");
 
             builder.HasOne(x => x.Project)
                 .WithMany()
                 .HasForeignKey(x => x.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_task_items_projects_project_id");
+
+            builder.HasOne(x => x.Status)
+                .WithMany()
+                .HasForeignKey(x => x.StatusId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("fk_task_items_task_statuses_status_id");
         }
     }
 }

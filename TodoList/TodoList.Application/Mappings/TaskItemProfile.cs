@@ -14,8 +14,13 @@ namespace TodoList.Application.Mappings
                     dto.Description,
                     dto.StoryPoints,
                     dto.Deadline,
-                    dto.ProjectId));
-            CreateMap<TaskItem, TaskItemDto>();
+                    dto.ProjectId,
+                    dto.StatusId));
+
+            CreateMap<TaskItem, TaskItemDto>()
+                .ForMember(
+                    destination => destination.TaskStatusDto,
+                    options => options.MapFrom(source => source.Status));
         }
     }
 }

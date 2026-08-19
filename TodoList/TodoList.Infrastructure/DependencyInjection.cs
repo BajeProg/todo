@@ -23,6 +23,7 @@ namespace TodoList.Infrastructure
 
             services.AddScoped<IRepository<Project>, ProjectRepository>();
             services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+            services.AddScoped<ITaskStatusRepository, TaskStatusRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;

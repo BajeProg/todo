@@ -31,6 +31,7 @@ namespace TodoList.Infrastructure.Repositories
             return await _context.Tasks
                 .AsNoTracking()
                 .Include(x => x.Project)
+                .Include(x => x.Status)
                 .SingleOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
@@ -40,6 +41,7 @@ namespace TodoList.Infrastructure.Repositories
             return await _context.Tasks
                 .AsNoTracking()
                 .Include(x => x.Project)
+                .Include(x => x.Status)
                 .ToListAsync(cancellationToken);
         }
 
@@ -50,6 +52,7 @@ namespace TodoList.Infrastructure.Repositories
             return await _context.Tasks
                 .AsNoTracking()
                 .Include(x => x.Project)
+                .Include(x => x.Status)
                 .Where(x => x.ProjectId == projectId)
                 .ToListAsync(cancellationToken);
         }

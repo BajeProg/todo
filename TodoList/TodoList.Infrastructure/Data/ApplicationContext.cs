@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.Domain.Entities;
+using TaskStatusEntity = TodoList.Domain.Entities.TaskStatus;
 
 namespace TodoList.Infrastructure.Data
 {
@@ -12,6 +13,7 @@ namespace TodoList.Infrastructure.Data
 
         public DbSet<Project> Projects => Set<Project>();
         public DbSet<TaskItem> Tasks => Set<TaskItem>();
+        public DbSet<TaskStatusEntity> TaskStatuses => Set<TaskStatusEntity>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

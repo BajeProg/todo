@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TodoList.Application.UseCases.Project;
 using TodoList.Application.UseCases.TaskItem;
+using TodoList.Application.UseCases.TaskStatus;
 
 namespace TodoList.Application
 {
@@ -15,6 +16,7 @@ namespace TodoList.Application
 
             services.AddScoped<ProjectService>();
             services.AddScoped<TaskitemService>();
+            services.AddScoped<TaskStatusService>();
 
             return services;
         }

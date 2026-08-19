@@ -86,12 +86,17 @@ namespace TodoList.Application.UseCases.TaskItem
                 return null;
             }
 
+            var statusId = dto.StatusId == Guid.Empty
+                ? taskItem.StatusId
+                : dto.StatusId;
+
             taskItem.Update(
                 dto.Name,
                 dto.Description,
                 dto.StoryPoints,
                 dto.Deadline,
-                dto.ProjectId);
+                dto.ProjectId,
+                statusId);
 
             await _taskRepo.Update(taskItem, cancellationToken);
             await _unitOfWork.SaveChanges(cancellationToken);
